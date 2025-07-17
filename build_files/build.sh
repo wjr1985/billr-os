@@ -21,6 +21,7 @@ PACKAGES=(
     libuuid-devel
     libyaml-devel
     make
+    mosh
     ncurses-devel
     neovim
     openssl-devel
