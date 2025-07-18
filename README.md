@@ -1,12 +1,12 @@
 # billr-os
 
-This is a custom Fedora Atomic image based on [Bazzite](https://bazzite.gg) and [Bazzite-dx](https://dev.bazzite.gg) with some changes for my specific experience.
+This is a custom Fedora Atomic image based on [Bazzite](https://bazzite.gg). This also borrows heavily from [Bazzite DX](https://github.com/ublue-os/bazzite-dx/), but doesn't include everything in Bazzite DX (namely no VSCode since I don't use it).
 
 This is a WIP and will be changing frequently.
 
 ## Current features
 - All Bazzite features
-- All Bazzite-dx features
+- 
 - Includes the following additional packages
   - Required libraries for building Python and Ruby locally
   - [neovim](https://neovim.io) + python3-neovim
