@@ -1,0 +1,31 @@
+---
+name: Build All
+on:
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '05 10 * * *'  # 10:05am UTC everyday
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/README.md'
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+jobs:
+  build-image:
+    name: Build Images
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    strategy:
+      fail-fast: false
+      matrix:
+        image_type: ["bazzite", "bazzite-gnome"]
+    with:
+      image_type: ${{ matrix.image_type }}
