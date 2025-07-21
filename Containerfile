@@ -9,6 +9,8 @@ COPY build_files /build_files
 # Base Image
 FROM ghcr.io/ublue-os/${IMAGE_BASE}:stable
 
+ARG IMAGE_BASE=bazzite
+
 RUN --mount=type=tmpfs,dst=/tmp \
   --mount=type=bind,from=ctx,source=/,target=/run/context \
   mkdir -p /var/roothome && \
