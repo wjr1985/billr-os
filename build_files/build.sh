@@ -6,9 +6,12 @@ CONTEXT_PATH="$(realpath "$(dirname "$0")/..")" # should return /run/context
 BUILD_SCRIPTS_PATH="$(realpath "$(dirname $0)")"
 MAJOR_VERSION_NUMBER="$(sh -c '. /usr/lib/os-release ; echo $VERSION_ID')"
 SCRIPTS_PATH="$(realpath "$(dirname "$0")/scripts")"
+IMAGE_BASE="$1"
+
 export CONTEXT_PATH
 export SCRIPTS_PATH
 export MAJOR_VERSION_NUMBER
+export IMAGE_BASE
 
 run_buildscripts_for() {
 	WHAT=$1

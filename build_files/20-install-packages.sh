@@ -43,6 +43,19 @@ PACKAGES=(
     zsh
 )
 
+# Remove plasma-workspace-x11 if IMAGE_BASE is set to bazzite-gnome
+if [[ "${IMAGE_BASE:-}" == "bazzite-gnome" ]]; then
+    echo "Removing plasma-workspace-x11 for bazzite-gnome image"
+    # Create a new array without plasma-workspace-x11
+    NEW_PACKAGES=()
+    for pkg in "${PACKAGES[@]}"; do
+        if [[ "$pkg" != "plasma-workspace-x11" ]]; then
+            NEW_PACKAGES+=("$pkg")
+        fi
+    done
+    PACKAGES=("${NEW_PACKAGES[@]}")
+fi
+
 # Install all packages from fedora repos
 dnf5 install -y "${PACKAGES[@]}"
 
