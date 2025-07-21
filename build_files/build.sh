@@ -13,6 +13,10 @@ export SCRIPTS_PATH
 export MAJOR_VERSION_NUMBER
 export IMAGE_BASE
 
+printf "::group:: ===debug===\n"
+printf "Image base is: %s\n" "${IMAGE_BASE}"
+printf "::endgroup::\n"
+
 run_buildscripts_for() {
 	WHAT=$1
 	shift

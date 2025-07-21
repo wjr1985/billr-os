@@ -12,7 +12,7 @@ FROM ghcr.io/ublue-os/${IMAGE_BASE}:stable
 RUN --mount=type=tmpfs,dst=/tmp \
   --mount=type=bind,from=ctx,source=/,target=/run/context \
   mkdir -p /var/roothome && \
-  /run/context/build_files/build.sh ${IMAGE_BASE} && \
+  /run/context/build_files/build.sh "${IMAGE_BASE}" && \
   ostree container commit
     
 ### LINTING

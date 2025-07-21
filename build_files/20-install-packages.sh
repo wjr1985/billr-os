@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -xeuo pipefail
 
+printf "IMAGE BASE IS %s\n" "${IMAGE_BASE}"
+
 PACKAGES=(
     android-tools
     autoconf
