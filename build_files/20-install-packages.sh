@@ -27,7 +27,6 @@ PACKAGES=(
     openssl-devel
     patch
     perl-FindBin
-    plasma-workspace-x11
     podman-machine
     podman-tui
     python3-neovim
@@ -45,17 +44,13 @@ PACKAGES=(
     zsh
 )
 
-# Remove plasma-workspace-x11 if IMAGE_BASE is set to bazzite-gnome
-if [[ "${IMAGE_BASE:-}" == "bazzite-gnome" ]]; then
-    echo "Removing plasma-workspace-x11 for bazzite-gnome image"
-    # Create a new array without plasma-workspace-x11
-    NEW_PACKAGES=()
-    for pkg in "${PACKAGES[@]}"; do
-        if [[ "$pkg" != "plasma-workspace-x11" ]]; then
-            NEW_PACKAGES+=("$pkg")
-        fi
-    done
-    PACKAGES=("${NEW_PACKAGES[@]}")
+# Add desktop environment x11 packages based on IMAGE_BASE
+if [[ "${IMAGE_BASE:-}" == *"gnome"* ]]; then
+    echo "Detected GNOME image: adding gnome-session-xsession"
+    PACKAGES+=("gnome-session-xsession")
+else
+    echo "Non-GNOME image: adding plasma-workspace-x11"
+    PACKAGES+=("plasma-workspace-x11")
 fi
 
 # Install all packages from fedora repos
